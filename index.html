@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ln1QlUPkjOxZa040glKiQPsweH6vaDL2REEUyZgA0MU='; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>Return to GOMER</title>
+  <style>body{font:16px system-ui;max-width:38rem;margin:10vh auto;padding:1.5rem;color:#17202a}p{line-height:1.5}</style>
+</head>
+<body>
+  <h1>Returning to GOMER…</h1>
+  <p id="status">Keep GOMER open. This tab will connect back to the GOMER plugin on this computer.</p>
+  <script>
+(()=>{const q=new URLSearchParams(location.search),s=q.get("state")||"",m=/^g1\.(\d{4,5})\.[A-Za-z0-9_-]{32,}$/.exec(s),p=m?Number(m[1]):0,o=new URLSearchParams();for(const k of["state","code","error"]){const v=q.get(k);if(v!==null)o.set(k,v)}if(!m||p<1024||p>65535||!o.get("state")||(!o.get("code")===!o.get("error"))){document.querySelector("#status").textContent="This authorization cannot be returned safely. Close this tab and start again in GOMER.";return}location.replace(`http://127.0.0.1:${p}/callback?${o}`)})();
+  </script>
+</body>
+</html>
